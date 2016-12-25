@@ -11,9 +11,23 @@ export default class Mapper {
       o[mappings[k]] = k;
       return o;
     }, {});
+
+    this.map = this.map.bind(this);
+    this.reverseMap = this.reverseMap.bind(this);
   }
 
-  public map(obj: any, reverse: boolean = false): any {
+  public map(obj: any, index?: number, array?: any[]): any;
+  public map(obj: any, reverse: boolean): any;
+  public map(obj: any): any {
+    return this.mapInternal(obj, arguments.length > 1 && typeof(arguments[1]) === 'boolean' ? arguments[0] : false);
+  }
+
+  public reverseMap(obj: any, index?: number, array?: any[]): any;
+  public reverseMap(obj: any, ...args: any[]): any {
+    return this.mapInternal(obj, true);
+  }
+
+  private mapInternal(obj: any, reverse: boolean): any {
     const result: any = {};
     let keys = Object.keys(obj);
 

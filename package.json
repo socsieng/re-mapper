@@ -1,6 +1,6 @@
 {
   "name": "re-mapper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript object mapper",
   "license": "MIT",
   "repository": "https://github.com/socsieng/re-mapper.git",
@@ -19,7 +19,8 @@
     "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
     "test": "npm run build && mocha --compilers ts:ts-node/register --recursive src/**/*-spec.ts",
     "watch": "npm run build -- --watch",
-    "watch:test": "npm run test -- --watch"
+    "watch:test": "npm run test -- --watch",
+    "prepublish": "npm run test"
   },
   "dependencies": {
   },
