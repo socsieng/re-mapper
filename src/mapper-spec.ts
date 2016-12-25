@@ -1,7 +1,5 @@
-import * as chai from 'chai';
+import { expect } from 'chai';
 import Mapper from './mapper';
-
-const expect = chai.expect;
 
 describe('Mapper', () => {
   it('should directly map an object', () => {
@@ -18,12 +16,30 @@ describe('Mapper', () => {
     expect(result).to.eql({ hi: 'world' });
   });
 
-  it('should map an object with configuration with default value', () => {
-    const mapper = new Mapper({}, {
-      hello: 'hi',
+  it('should ignore mapping when property not exists', () => {
+    const mapper = new Mapper({
+      other: 'other',
     });
-    const result = mapper.map({});
-    expect(result).to.eql({ hello: 'hi' });
+    const result = mapper.map({ hello: 'world' });
+    expect(result).to.eql({ hello: 'world' });
+  });
+
+  describe('default values', () => {
+    it('should map an object with configuration with default value', () => {
+      const mapper = new Mapper({}, {
+        hello: 'hi',
+      });
+      const result = mapper.map({});
+      expect(result).to.eql({ hello: 'hi' });
+    });
+
+    it('should not modifiy existing value with default value', () => {
+      const mapper = new Mapper({}, {
+        hello: 'hi',
+      });
+      const result = mapper.map({ hello: 'world' });
+      expect(result).to.eql({ hello: 'world' });
+    });
   });
 
   describe('reverse mapping', () => {

@@ -18,17 +18,18 @@
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
     "test": "npm run build && mocha --compilers ts:ts-node/register --recursive src/**/*-spec.ts",
+    "test:cover": "ts-node node_modules/.bin/istanbul cover -e .ts  -x \"*.d.ts\" -x \"*-spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec src/**/*-spec.ts",
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch",
     "prepublish": "npm run test"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/chai": "^3.0.0",
     "@types/mocha": "^2.0.0",
     "@types/node": "6.0.31",
     "chai": "^3.0.0",
+    "istanbul": "^1.1.0-alpha",
     "mocha": "^3.0.0",
     "rimraf": "^2.0.0",
     "ts-node": "^1.0.0",

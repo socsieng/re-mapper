@@ -23,7 +23,7 @@ export default class Mapper {
   }
 
   public reverseMap(obj: any, index?: number, array?: any[]): any;
-  public reverseMap(obj: any, ...args: any[]): any {
+  public reverseMap(obj: any): any {
     return this.mapInternal(obj, true);
   }
 
