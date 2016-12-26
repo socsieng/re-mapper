@@ -17,10 +17,12 @@
     "clean": "rimraf lib",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
-    "test": "ts-node node_modules/.bin/istanbul cover -e .ts  -x \"*.d.ts\" -x \"*-spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec src/**/*-spec.ts",
+    "test": "ts-node node_modules/.bin/_mocha --compilers ts:ts-node/register -R spec src/**/*-spec.ts",
+    "test:coverage": "ts-node node_modules/.bin/istanbul cover -e .ts  -x \"*.d.ts\" -x \"*-spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec src/**/*-spec.ts",
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch",
-    "prepublish": "npm run test"
+    "prepublish": "npm run test",
+    "coveralls": "node coveralls < coverage/lcov.info"
   },
   "dependencies": {},
   "devDependencies": {
@@ -28,6 +30,7 @@
     "@types/mocha": "^2.0.0",
     "@types/node": "6.0.31",
     "chai": "^3.0.0",
+    "coveralls": "^2.11.15",
     "istanbul": "^1.1.0-alpha",
     "mocha": "^3.0.0",
     "rimraf": "^2.0.0",
