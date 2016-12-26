@@ -22,7 +22,7 @@
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch",
     "prepublish": "npm run test",
-    "coveralls": "node coveralls < coverage/lcov.info"
+    "coveralls": "node node_modules/.bin/coveralls < coverage/lcov.info"
   },
   "dependencies": {},
   "devDependencies": {
