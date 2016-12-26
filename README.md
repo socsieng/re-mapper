@@ -1,6 +1,7 @@
 # ReMapper
 
 [![Build Status](https://travis-ci.org/socsieng/re-mapper.svg?branch=master)](https://travis-ci.org/socsieng/re-mapper)
+[![Coverage Status](https://coveralls.io/repos/github/socsieng/re-mapper/badge.svg?branch=master)](https://coveralls.io/github/socsieng/re-mapper?branch=master)
 
 Remapper maps one object into another using a mapping configuration overrides. By default, all properties from the source object will be remapped as-is to the destination object unless, an _override_ is provided.
 
