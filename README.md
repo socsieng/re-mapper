@@ -5,7 +5,7 @@
 
 Remapper maps one object into another using a mapping configuration overrides. By default, all properties from the source object will be remapped as-is to the destination object unless, an _override_ is provided.
 
-It was created to help with mapping between JavaScript objects and relation database models.
+It was created to help with mapping between JavaScript objects and sql/relation database models.
 
 ## Usage
 
