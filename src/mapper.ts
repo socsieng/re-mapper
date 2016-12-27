@@ -35,10 +35,13 @@ export default class Mapper {
       Object.assign(result, obj);
     } else {
       keys.forEach((k) => {
-        const mapKey = (reverse ? this.reverseMappings : this.mappings)[k];
+        const mapping = (reverse ? this.reverseMappings : this.mappings);
+        const mapKey = mapping[k];
 
-        if (mapKey) {
-          result[mapKey] = obj[k];
+        if (k in mapping) {
+          if (mapKey !== null && typeof(mapKey) !== 'undefined') {
+            result[mapKey] = obj[k];
+          }
         } else {
           result[k] = obj[k];
         }

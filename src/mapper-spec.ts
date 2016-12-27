@@ -24,6 +24,22 @@ describe('Mapper', () => {
     expect(result).to.eql({ hello: 'world' });
   });
 
+  it('should not map a null property', () => {
+    const mapper = new Mapper({
+      no_map: null,
+    });
+    const result = mapper.map({ no_map: 'value' });
+    expect(result).to.eql({ });
+  });
+
+  it('should not map an undefined property', () => {
+    const mapper = new Mapper({
+      no_map: undefined,
+    });
+    const result = mapper.map({ no_map: 'value' });
+    expect(result).to.eql({ });
+  });
+
   describe('default values', () => {
     it('should map an object with configuration with default value', () => {
       const mapper = new Mapper({}, {
@@ -74,6 +90,19 @@ describe('Mapper', () => {
       });
       const result = mapper.map({ hi: 'world' }, true);
       expect(result).to.eql({ hello: 'world', list: [] });
+    });
+
+    it('should not fail when reverse mapping null properties', () => {
+      const mapper = new Mapper({
+        no_map1: null,
+        no_map2: null,
+        no_map3: undefined,
+        no_map4: undefined,
+      });
+      let result = mapper.map({ hello: 'world', no_map1: 'value' });
+      expect(result).to.eql({ hello: 'world' });
+      result = mapper.reverseMap(result);
+      expect(result).to.eql({ hello: 'world' });
     });
   });
 
