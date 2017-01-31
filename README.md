@@ -7,6 +7,12 @@ Remapper maps one object into another using a mapping configuration overrides. B
 
 It was created to help with mapping between JavaScript objects and sql/relation database models.
 
+## Installation
+
+```
+npm install --save re-mapper
+```
+
 ## Usage
 
 Basic mapping example: 
